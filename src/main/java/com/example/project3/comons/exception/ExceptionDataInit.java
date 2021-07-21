@@ -27,6 +27,6 @@ public class ExceptionDataInit implements CommandLineRunner {
 	}
 
 	public void initialize(){
-		redisUtils.hPutIfAbsent(ERROR_MESSAGE_LIST,Integer.toString(666),"未定义内部错误");
+		redisUtils.hPutIfAbsent(ERROR_MESSAGE_LIST,Integer.toString(666),"Undefined internal error");
 	}
 }
