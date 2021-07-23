@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.project3.dao.BidDao">
+    <resultMap id="BidMap" type="com.example.project3.pojo.Bid">
+        <id column="id" property="id" javaType="integer" jdbcType="INTEGER"/>
+        <result column="enable" property="enable" javaType="integer" jdbcType="TINYINT"/>
+        <result column="amount" property="amount" javaType="integer" jdbcType="INTEGER"/>
+        <result column="price" property="price" javaType="decimal" jdbcType="DECIMAL"/>
+        <result column="coal" property="coal" javaType="string" jdbcType="VARCHAR"/>
+        <result column="transportWat" property="transportWay" javaType="string" jdbcType="VARCHAR"/>
+        <result column="transportFee" property="transportFee" javaType="decimal" jdbcType="DECIMAL"/>
+        <result column="address" property="address" javaType="string" jdbcType="VARCHAR"/>
+        <result column="offerBond" property="offerBond" javaType="decimal" jdbcType="DECIMAL"/>
+
+    </resultMap>
+</mapper>
