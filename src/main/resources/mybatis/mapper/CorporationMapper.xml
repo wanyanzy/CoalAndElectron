@@ -3,7 +3,7 @@
 <mapper namespace="com.example.project3.dao.CorporationDao">
     <resultMap id="corporationMap" type="com.example.project3.pojo.Corporation">
         <id column="id" property="id" javaType="integer" jdbcType="INTEGER"/>
-        <result column="enable" property="id" javaType="byte" jdbcType="TINYINT"/>
+        <result column="enable" property="enable" javaType="byte" jdbcType="TINYINT"/>
         <result column="name" property="name" javaType="string" jdbcType="VARCHAR"/>
         <result column="status" property="status" javaType="byte" jdbcType="TINYINT"/>
         <result column="bankName" property="bankName" javaType="string" jdbcType="VARCHAR"/>
@@ -57,7 +57,7 @@
     </delete>
     <select id="select" resultMap="corporationMap">
         select * from corporation
-        where id = #{id,jdbcType=INTEGER} and enable = 0
+        where id=#{id,jdbcType=INTEGER} and enable = 0
     </select>
     <select id="selectAll" resultMap="corporationMap">
         select * from corporation where enable = 0
@@ -88,6 +88,8 @@
                 ,resourcePlaces=#{corporation.resourcePlaces,jdbcType=VARCHAR}
                 ,transportWay=#{corporation.transportWay,jdbcType=VARCHAR}
                 ,introduction=#{corporation.introduction,jdbcType=VARCHAR}
-                ,auditOpinion=#{corporation.auditOpinion,jdbcType=VARCHAR})
+                ,auditOpinion=#{corporation.auditOpinion,jdbcType=VARCHAR}
+        where id = #{corporation.id,jdbcType=INTEGER}
+
     </update>
 </mapper>

@@ -3,6 +3,7 @@ package com.example.project3.manager.impl;
 import com.example.project3.dao.OfferPriceDao;
 import com.example.project3.manager.OfferPriceManager;
 import com.example.project3.pojo.OfferPrice;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,11 @@ import java.util.List;
 @Service
 public class OfferPriceManagerImpl implements OfferPriceManager {
     OfferPriceDao offerPriceDao;
+
+    @Autowired
+    public void setOfferPriceDao(OfferPriceDao offerPriceDao) {
+        this.offerPriceDao = offerPriceDao;
+    }
 
     @Override
     public Integer insert(OfferPrice target) {
@@ -23,7 +29,7 @@ public class OfferPriceManagerImpl implements OfferPriceManager {
 
     @Override
     public Integer delete(Integer id) {
-        return this.delete(id);
+        return this.offerPriceDao.delete(id);
     }
 
     @Override
