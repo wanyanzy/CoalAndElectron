@@ -1,10 +1,12 @@
 package com.example.project3.dao;
 
 import com.example.project3.pojo.OfferPrice;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@Mapper
 public interface OfferPriceDao {
     Integer save (@Param("target") OfferPrice offerPrice);
 

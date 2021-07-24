@@ -9,13 +9,13 @@ import java.util.List;
 
 @Mapper
 public interface BidDao {
-    Integer save (@Param("bid") Bid bid);
+    Integer save (@Param("bid") Bid target);
 
     Integer drop (@Param("id") Integer id);
 
     Integer delete(@Param("id") Integer id);
 
-    Integer update (@Param("bid") Bid bid);
+    Integer update (@Param("bid") Bid target);
 
     Bid select(@Param("id") Integer id);
 

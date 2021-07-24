@@ -3,11 +3,20 @@ package com.example.project3.manager.impl;
 import com.example.project3.dao.BidDao;
 import com.example.project3.manager.BidManager;
 import com.example.project3.pojo.Bid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BidManagerImpl implements BidManager {
+
     BidDao bidDao;
+
+    @Autowired
+    public void setBidDao (BidDao bidDao){
+        this.bidDao=bidDao;
+    }
 
     @Override
     public Integer insert (Bid target){
@@ -26,12 +35,12 @@ public class BidManagerImpl implements BidManager {
 
     @Override
     public Integer update (Bid target){
-        return this.update(target);
+        return this.bidDao.update(target);
     }
 
     @Override
     public List<Bid> selectAll(){
-        return this.selectAll();
+        return this.bidDao.selectAll();
     }
 
     @Override

@@ -2,10 +2,12 @@ package com.example.project3.dao;
 
 import com.example.project3.pojo.ProjectUser;
 import io.swagger.v3.oas.annotations.Parameter;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@Mapper
 public interface ProjectUserDao {
     Integer save (@Param("target") ProjectUser projectUser);
 
