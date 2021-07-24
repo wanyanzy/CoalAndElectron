@@ -3,11 +3,19 @@ package com.example.project3.manager.impl;
 import com.example.project3.dao.OrderDao;
 import com.example.project3.manager.OrderManager;
 import com.example.project3.pojo.Order;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrderManagerImpl implements OrderManager {
     OrderDao orderDao;
+
+    @Autowired
+    public void setOrderDao(OrderDao orderDao) {
+        this.orderDao = orderDao;
+    }
 
     @Override
     public Integer insert(Order target) {
