@@ -9,13 +9,13 @@ import java.util.List;
 @Mapper
 public interface CorporationDao {
 
-    Integer save (@Param("Corporation") Corporation corporation);
+    Integer save (@Param("corporation") Corporation corporation);
 
     Integer drop (@Param("id") Integer id);
 
     Integer delete(@Param("id") Integer id);
 
-    Integer update (@Param("Corporation") Corporation corporation);
+    Integer update (@Param("corporation") Corporation corporation);
 
     Corporation select(@Param("id") Integer id);
 

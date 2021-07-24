@@ -3,9 +3,11 @@ package com.example.project3.manager.impl;
 import com.example.project3.dao.OrderDao;
 import com.example.project3.manager.OrderManager;
 import com.example.project3.pojo.Order;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrderManagerImpl implements OrderManager {
     OrderDao orderDao;
 

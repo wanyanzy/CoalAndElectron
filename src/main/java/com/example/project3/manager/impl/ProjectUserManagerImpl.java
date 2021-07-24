@@ -3,9 +3,11 @@ package com.example.project3.manager.impl;
 import com.example.project3.dao.ProjectUserDao;
 import com.example.project3.manager.ProjectUserManager;
 import com.example.project3.pojo.ProjectUser;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProjectUserManagerImpl implements ProjectUserManager {
     ProjectUserDao projectUserDao;
 

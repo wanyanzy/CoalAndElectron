@@ -3,9 +3,12 @@ package com.example.project3.manager.impl;
 import com.example.project3.dao.CorporationDao;
 import com.example.project3.manager.CorporationManager;
 import com.example.project3.pojo.Corporation;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class CorporationManagerImpl implements CorporationManager {
     CorporationDao corporationDao;
 

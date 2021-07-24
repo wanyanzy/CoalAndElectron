@@ -3,9 +3,11 @@ package com.example.project3.manager.impl;
 import com.example.project3.dao.OfferPriceDao;
 import com.example.project3.manager.OfferPriceManager;
 import com.example.project3.pojo.OfferPrice;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OfferPriceManagerImpl implements OfferPriceManager {
     OfferPriceDao offerPriceDao;
 

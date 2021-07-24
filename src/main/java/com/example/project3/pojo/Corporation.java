@@ -1,6 +1,8 @@
 package com.example.project3.pojo;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -11,19 +13,21 @@ import java.math.BigDecimal;
  */
 @Data
 @Accessors(chain = true)
+@Getter
+@Setter
 public class Corporation implements Serializable,Cloneable {
 	Integer id;
 	Byte enable;
 	Byte status;
 	BigDecimal leftMoney;
 	BigDecimal offerFrozen;
-	BigDecimal performanceFrozen;
+	BigDecimal performFrozen;
 	BigDecimal registrationMoney;
 	String name;
 	String bankName;
 	String account;
 	String shortName;
-	String representationName;
+	String representativeName;
 	String registrationArea;
 	String contactName;
 	String contactTelephone;
@@ -32,7 +36,7 @@ public class Corporation implements Serializable,Cloneable {
 	String businessLicenseUrl;
 	String taxUrl;
 	String organizationIdUrl;
-	String accountOpeningLicensesUrl;
+	String accountOpeningLicenseUrl;
 	String coalBusinessLicenseUrl;
 	String idCardUrl;
 	String resourcePlaces;
