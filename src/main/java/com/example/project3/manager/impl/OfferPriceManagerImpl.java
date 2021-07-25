@@ -17,6 +17,7 @@ public class OfferPriceManagerImpl implements OfferPriceManager {
         this.offerPriceDao = offerPriceDao;
     }
 
+
     @Override
     public Integer insert(OfferPrice target) {
         return this.offerPriceDao.save(target);
@@ -45,5 +46,15 @@ public class OfferPriceManagerImpl implements OfferPriceManager {
     @Override
     public OfferPrice select(Integer id) {
         return this.offerPriceDao.select(id);
+    }
+
+    @Override
+    public List<OfferPrice> selectByBidId(Integer bidId) {
+        return this.offerPriceDao.selectByBidId(bidId);
+    }
+
+    @Override
+    public List<OfferPrice> selectByUserId(Integer userId) {
+        return this.selectByUserId(userId);
     }
 }

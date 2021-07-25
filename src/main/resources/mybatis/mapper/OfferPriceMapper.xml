@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.project3.dao.OfferPriceDao">
+    <resultMap id="offerPriceMap" type="com.example.project3.pojo.OfferPrice">
+        <id column="id" property="id" javaType="integer" jdbcType="TINYINT"/>
+        <result column="enable" property="enable" javaType="byte" jdbcType="TINYINT"/>
+        <result column="price" property="price" javaType="decimal" jdbcType="DECIMAL"/>
+        <result column="amount" property="amount" javaType="integer" jdbcType="INTEGER"/>
+        <result column="userId" property="userId" javaType="integer" jdbcType="INTEGER"/>
+        <result column="bidId" property="bidId" javaType="integer" jdbcType="INTEGER"/>
+        <result column="message" property="message" javaType="string" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.example.project3.pojo.OfferPrice" useGeneratedKeys="true" keyColumn="id"
+            keyProperty="target.id">
+        insert into offer values (#{target.id,jdbcType=INTEGER},#{target.enable,jdbcType=TINYINT}
+        ,#{target.price,jdbcType=DECIMAL},#{target.amount,jdbcType=INTEGER}
+        ,#{target.userId,jdbcType=INTEGER},#{target.bidId,jdbcType=INTEGER}
+        ,#{target.message,jdbcType=VARCHAR})
+    </insert>
+    <update id="delete" parameterType="integer">
+        update offer set enable = 1
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <delete id="drop" parameterType="integer">
+        delete from offer where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <select id="select" resultMap="offerPriceMap">
+        select * from offer
+        where id = #{id,jdbcType=INTEGER} and enable = 0
+    </select>
+    <select id="selectAll" resultMap="offerPriceMap">
+        select * from offer
+        where enable = 0
+    </select>
+    <select id="selectByBidId" resultMap="offerPriceMap">
+        select * from offer
+        where bidId = #{bidId,jdbcType=INTEGER}
+        and enable = 0
+    </select>
+    <select id="selectByUserId" resultMap="offerPriceMap">
+        select * from offer
+        where userId = #{userId,jdbcType=INTEGER}
+        and enable = 0
+    </select>
+    <update id="update" parameterType="com.example.project3.pojo.OfferPrice">
+        update offer set
+        price=#{offerPrice.price,jdbcType=DECIMAL}
+        ,amount=#{offerPrice.amount,jdbcType=INTEGER}
+        ,userId=#{offerPrice.userId,jdbcType=INTEGER}
+        ,bidId=#{offerPrice.bidId,jdbcType=INTEGER}
+        ,message=#{offerPrice.message,jdbcType=VARCHAR}
+        where id = #{offerPrice.id,jdbcType=INTEGER}
+    </update>
+ </mapper>
