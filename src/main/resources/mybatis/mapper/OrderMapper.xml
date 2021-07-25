@@ -18,7 +18,7 @@
 
     <insert id="save" parameterType="com.example.project3.pojo.Order" useGeneratedKeys="true" keyColumn="id"
             keyProperty="target.id">
-        insert into order values (#{target.id,jdbcType=INTEGER},#{target.enable,jdbcType=TINYINT}
+        insert into 'order' values (#{target.id,jdbcType=INTEGER},#{target.enable,jdbcType=TINYINT}
         ,#{target.price,jdbcType=DECIMAL},#{target.amount,jdbcType=INTEGER}
         ,#{target.sellerId,jdbcType=INTEGER},#{target.buyerId,jdbcType=INTEGER}
         ,#{target.firstPartIsSeller,jdbcType=TINYINT},#{target.offerBond,jdbcType=DECIMAL}
@@ -26,21 +26,21 @@
         ,#{target.transportWay,jdbcType=VARCHAR},#{target.transportFee,jdbcType=DECIMAL})
     </insert>
     <update id="delete" parameterType="integer">
-        update order set enable = 1
+        update 'order' set enable = 1
         where id = #{id,jdbcType=INTEGER}
     </update>
     <delete id="drop" parameterType="integer">
-        delete from order where id = #{id,jdbcType=INTEGER}
+        delete from 'order' where id = #{id,jdbcType=INTEGER}
     </delete>
     <select id="select" resultMap="orderMap">
-        select * from order where id = #{id,jdbcType=INTEGER}
+        select * from 'order' where id = #{id,jdbcType=INTEGER}
         and enable = 0
     </select>
     <select id="selectAll" resultMap="orderMap">
-        select * from order where enable = 0
+        select * from 'order' where enable = 0
     </select>
     <update id="update" parameterType="com.example.project3.pojo.Order">
-        update order set
+        update 'order' set
         price=#{target.price,jdbcType=DECIMAL}
         ,amount=#{target.amount,jdbcType=INTEGER}
         ,sellerId=#{target.sellerId,jdbcType=INTEGER}
