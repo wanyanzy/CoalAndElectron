@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.project3.dao.CorporationDao">
+    <resultMap id="corporationMap" type="com.example.project3.pojo.Corporation">
+        <id column="id" property="id" javaType="integer" jdbcType="INTEGER"/>
+        <result column="enable" property="enable" javaType="byte" jdbcType="TINYINT"/>
+        <result column="name" property="name" javaType="string" jdbcType="VARCHAR"/>
+        <result column="status" property="status" javaType="byte" jdbcType="TINYINT"/>
+        <result column="bankName" property="bankName" javaType="string" jdbcType="VARCHAR"/>
+        <result column="account" property="account" javaType="string" jdbcType="VARCHAR"/>
+        <result column="leftMoney" property="leftMoney" javaType="decimal" jdbcType="DECIMAL"/>
+        <result column="offerFrozen" property="offerFrozen" javaType="decimal" jdbcType="DECIMAL"/>
+        <result column="performFrozen" property="performFrozen" javaType="decimal" jdbcType="DECIMAL"/>
+        <result column="shortName" property="shortName" javaType="string" jdbcType="VARCHAR"/>
+        <result column="representativeName" property="representativeName" javaType="string" jdbcType="VARCHAR"/>
+        <result column="registrationArea" property="registrationArea" javaType="string" jdbcType="VARCHAR"/>
+        <result column="registrationMoney" property="registrationMoney" javaType="decimal" jdbcType="DECIMAL"/>
+        <result column="contactName" property="contactName" javaType="string" jdbcType="VARCHAR"/>
+        <result column="contactTelephone" property="contactTelephone" javaType="string" jdbcType="VARCHAR"/>
+        <result column="fax" property="fax" javaType="string" jdbcType="VARCHAR"/>
+        <result column="email" property="email" javaType="string" jdbcType="VARCHAR"/>
+        <result column="businessLicenseUrl" property="businessLicenseUrl" javaType="string" jdbcType="VARCHAR"/>
+        <result column="taxUrl" property="taxUrl" javaType="string" jdbcType="VARCHAR"/>
+        <result column="organizationIdUrl" property="organizationIdUrl" javaType="string" jdbcType="VARCHAR"/>
+        <result column="accountOpeningLicenseUrl" property="accountOpeningLicenseUrl" javaType="string" jdbcType="VARCHAR"/>
+        <result column="coalBusinessLicenseUrl" property="coalBusinessLicenseUrl" javaType="string" jdbcType="VARCHAR"/>
+        <result column="idCardUrl" property="idCardUrl" javaType="string" jdbcType="VARCHAR"/>
+        <result column="resourcePlaces" property="resourcePlaces" javaType="string" jdbcType="VARCHAR"/>
+        <result column="transportWay" property="transportWay" javaType="string" jdbcType="VARCHAR"/>
+        <result column="introduction" property="introduction" javaType="string" jdbcType="VARCHAR"/>
+        <result column="auditOpinion" property="auditOpinion" javaType="string" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.example.project3.pojo.Corporation" useGeneratedKeys="true" keyColumn="id"
+            keyProperty="corporation.id">
+        insert into corporation values (#{corporation.id,jdbcType=INTEGER},#{corporation.enable,jdbcType=TINYINT}
+        ,#{corporation.name,jdbcType=VARCHAR},#{corporation.status,jdbcType=TINYINT}
+        ,#{corporation.bankName,jdbcType=VARCHAR},#{corporation.account,jdbcType=VARCHAR}
+        ,#{corporation.leftMoney,jdbcType=DECIMAL},#{corporation.offerFrozen,jdbcType=DECIMAL}
+        ,#{corporation.performFrozen,jdbcType=DECIMAL},#{corporation.shortName,jdbcType=VARCHAR}
+        ,#{corporation.representativeName,jdbcType=VARCHAR},#{corporation.registrationArea,jdbcType=VARCHAR}
+        ,#{corporation.registrationMoney,jdbcType=DECIMAL},#{corporation.contactName,jdbcType=VARCHAR}
+        ,#{corporation.contactTelephone,jdbcType=VARCHAR},#{corporation.fax,jdbcType=VARCHAR}
+        ,#{corporation.email,jdbcType=VARCHAR},#{corporation.businessLicenseUrl,jdbcType=VARCHAR}
+        ,#{corporation.taxUrl,jdbcType=VARCHAR},#{corporation.organizationIdUrl,jdbcType=VARCHAR}
+        ,#{corporation.accountOpeningLicenseUrl,jdbcType=VARCHAR},#{param1.coalBusinessLicenseUrl,jdbcType=VARCHAR}
+        ,#{corporation.idCardUrl,jdbcType=VARCHAR},#{corporation.resourcePlaces,jdbcType=VARCHAR}
+        ,#{corporation.transportWay,jdbcType=VARCHAR},#{corporation.introduction,jdbcType=VARCHAR}
+        ,#{corporation.auditOpinion,jdbcType=VARCHAR})
+    </insert>
+    <update id="delete" parameterType="integer">
+        update corporation set enable = 1
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <delete id="drop" parameterType="integer">
+        delete from corporation where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <select id="select" resultMap="corporationMap">
+        select * from corporation
+        where id=#{id,jdbcType=INTEGER} and enable = 0
+    </select>
+    <select id="selectAll" resultMap="corporationMap">
+        select * from corporation where enable = 0
+    </select>
+    <update id="update" parameterType="com.example.project3.pojo.Corporation">
+        update corporation set
+                name=#{corporation.name,jdbcType=VARCHAR}
+                ,status=#{corporation.status,jdbcType=TINYINT}
+                ,bankName=#{corporation.bankName,jdbcType=VARCHAR}
+                ,account=#{corporation.account,jdbcType=VARCHAR}
+                ,leftMoney=#{corporation.leftMoney,jdbcType=DECIMAL}
+                ,offerFrozen=#{corporation.offerFrozen,jdbcType=DECIMAL}
+                ,performFrozen=#{corporation.performFrozen,jdbcType=DECIMAL}
+                ,shortname=#{corporation.shortName,jdbcType=VARCHAR}
+                ,representativeName=#{corporation.representativeName,jdbcType=VARCHAR}
+                ,registrationArea=#{corporation.registrationArea,jdbcType=VARCHAR}
+                ,registrationMoney=#{corporation.registrationMoney,jdbcType=DECIMAL}
+                ,contactName=#{corporation.contactName,jdbcType=VARCHAR}
+                ,contactTelephone=#{corporation.contactTelephone,jdbcType=VARCHAR}
+                ,fax=#{corporation.fax,jdbcType=VARCHAR}
+                ,email=#{corporation.email,jdbcType=VARCHAR}
+                ,businessLicenseUrl=#{corporation.businessLicenseUrl,jdbcType=VARCHAR}
+                ,taxUrl=#{corporation.taxUrl,jdbcType=VARCHAR}
+                ,organizationIdUrl=#{corporation.organizationIdUrl,jdbcType=VARCHAR}
+                ,accountOpeningLicenseUrl=#{corporation.accountOpeningLicenseUrl,jdbcType=VARCHAR}
+                ,coalBusinessLicenseUrl=#{corporation.coalBusinessLicenseUrl,jdbcType=VARCHAR}
+                ,idCardUrl=#{corporation.idCardUrl,jdbcType=VARCHAR}
+                ,resourcePlaces=#{corporation.resourcePlaces,jdbcType=VARCHAR}
+                ,transportWay=#{corporation.transportWay,jdbcType=VARCHAR}
+                ,introduction=#{corporation.introduction,jdbcType=VARCHAR}
+                ,auditOpinion=#{corporation.auditOpinion,jdbcType=VARCHAR}
+        where id = #{corporation.id,jdbcType=INTEGER}
+
+    </update>
+</mapper>

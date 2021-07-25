@@ -1,6 +1,8 @@
 package com.example.project3.pojo;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -11,9 +13,12 @@ import java.math.BigDecimal;
  */
 @Accessors(chain = true)
 @Data
+@Getter
+@Setter
 public class Bid implements Cloneable, Serializable {
 	Integer id;
 	Byte enable;
+	Integer firstPartIsSeller;
 	Integer corporateId;
 	Integer amount;
 	BigDecimal price;

@@ -16,11 +16,12 @@ public class Order implements Serializable {
 	Byte enable;
 	BigDecimal price;
 	Integer amount;
-	Corporation seller;
-	Corporation buyer;
+	Integer sellerId;
+	Integer buyerId;
 	Byte firstPartIsSeller;
 	BigDecimal offerBond;
+	BigDecimal performBond;
 	String contractUrl;
-	String transport;
+	String transportWay;
 	BigDecimal transportFee;
 }

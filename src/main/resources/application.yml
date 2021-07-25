@@ -3,8 +3,8 @@ server:
 
 spring:
   datasource:
-    username: root
-    password: root
+    username: coal_trade
+    password: TKzSafdrAj4JEPnd
     url: jdbc:mysql://47.98.206.89:3306/coal_trade?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&&allowPublicKeyRetrieval=true&&useAffectedRows=true
     driver-class-name: com.mysql.cj.jdbc.Driver
   jackson:
