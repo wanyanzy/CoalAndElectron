@@ -1,6 +1,7 @@
 package com.example.project3.dao;
 
 import com.example.project3.pojo.OfferPrice;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -21,5 +22,7 @@ public interface OfferPriceDao {
     List<OfferPrice> selectAll ();
 
     List<OfferPrice> selectByBidId(@Param("bidId") Integer bidId);
+
+    List<OfferPrice> selectByUserId(@Param("userId") Integer userId);
 
 }

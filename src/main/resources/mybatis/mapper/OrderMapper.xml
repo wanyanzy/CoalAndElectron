@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.project3.dao.OrderDao">
+    <resultMap id="orderMap" type="com.example.project3.pojo.Order">
+        <id column="id" javaType="integer" jdbcType="INTEGER"/>
+        <result column="enable" property="enable" javaType="byte" jdbcType="TINYINT"/>
+        <result column="price" property="price" javaType="decimal" jdbcType="DECIMAL"/>
+        <result column="amount" property="amount" javaType="integer" jdbcType="INTEGER"/>
+        <result column="sellerId" property="sellerId" javaType="integer" jdbcType="INTEGER"/>
+        <result column="buyerId" property="buyerId" javaType="integer" jdbcType="INTEGER"/>
+        <result column="firstPartIsSeller" property="firstPartIsSeller" javaType="byte" jdbcType="TINYINT"/>
+        <result column="offerBond" property="offerBond" javaType="decimal" jdbcType="DECIMAL"/>
+        <result column="performBond" property="performBond" javaType="decimal" jdbcType="DECIMAL"/>
+        <result column="contractUrl" property="contractUrl" javaType="string" jdbcType="VARCHAR"/>
+        <result column="transportWay" property="transportWay" javaType="string" jdbcType="VARCHAR"/>
+        <result column="transportFee" property="transportFee" javaType="decimal" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.example.project3.pojo.Order" useGeneratedKeys="true" keyColumn="id"
+            keyProperty="target.id">
+        insert into order values (#{target.id,jdbcType=INTEGER},#{target.enable,jdbcType=TINYINT}
+        ,#{target.price,jdbcType=DECIMAL},#{target.amount,jdbcType=INTEGER}
+        ,#{target.sellerId,jdbcType=INTEGER},#{target.buyerId,jdbcType=INTEGER}
+        ,#{target.firstPartIsSeller,jdbcType=TINYINT},#{target.offerBond,jdbcType=DECIMAL}
+        ,#{target.performBond,jdbcType=DECIMAL},#{target.contractUrl,jdbcType=VARCHAR}
+        ,#{target.transportWay,jdbcType=VARCHAR},#{target.transportFee,jdbcType=DECIMAL})
+    </insert>
+    <update id="delete" parameterType="integer">
+        update order set enable = 1
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <delete id="drop" parameterType="integer">
+        delete from order where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <select id="select" resultMap="orderMap">
+        select * from order where id = #{id,jdbcType=INTEGER}
+        and enable = 0
+    </select>
+    <select id="selectAll" resultMap="orderMap">
+        select * from order where enable = 0
+    </select>
+    <update id="update" parameterType="com.example.project3.pojo.Order">
+        update order set
+        price=#{target.price,jdbcType=DECIMAL}
+        ,amount=#{target.amount,jdbcType=INTEGER}
+        ,sellerId=#{target.sellerId,jdbcType=INTEGER}
+        ,buyerId=#{target.buyerId,jdbcType=INTEGER}
+        ,firstPartIsSeller=#{target.firstPartIsSeller,jdbcType=TINYINT}
+        ,offerBond=#{target.offerBond,jdbcType=DECIMAL}
+        ,performBond=#{target.performBond,jdbcType=DECIMAL}
+        ,contractUrl=#{target.contractUrl,jdbcType=VARCHAR}
+        ,transportWay=#{target.transportWay,jdbcType=VARCHAR}
+        ,transportFee=#{target.transportFee,jdbcType=DECIMAL}
+        where id = #{target.id,jdbcType=INTEGER}
+    </update>
+</mapper>

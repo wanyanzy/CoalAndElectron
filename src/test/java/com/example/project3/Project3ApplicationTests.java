@@ -44,9 +44,10 @@ class Project3ApplicationTests {
 
 	@Test
 	void test_corporation () {
+
 		Corporation corporation = corporationManager.select(1);
-		corporation.setName("corp1.1");
-		corporationManager.update(corporation);
+		corporation.setId(null);
+		corporationManager.insert(corporation);
 	}
 
 }

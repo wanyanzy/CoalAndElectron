@@ -17,6 +17,8 @@ public interface OfferPriceManager {
 
     OfferPrice select (Integer id);
 
+    List<OfferPrice> selectByBidId(Integer bidId);
 
+    List<OfferPrice> selectByUserId(Integer userId);
 
 }
