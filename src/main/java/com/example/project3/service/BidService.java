@@ -1,4 +1,4 @@
-package service;
+package com.example.project3.service;
 
 import com.example.project3.pojo.Bid;
 
@@ -17,5 +17,10 @@ public interface BidService {
 
     Bid select(Integer id);
 
+    List<Bid> selectForSell();
+
+    List<Bid> selectForBuy();
+
     List<Bid> selectByCorporateId(Integer corporateId);
+
 }

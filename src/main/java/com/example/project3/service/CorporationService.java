@@ -1,4 +1,4 @@
-package service;
+package com.example.project3.service;
 
 
 import com.example.project3.pojo.Corporation;
@@ -16,5 +16,8 @@ public interface CorporationService {
 
     List<Corporation> selectAll();
 
+    List<Corporation> selectByCorporateId(Integer corporationId);
+
     void update (Corporation corporation);
+
 }

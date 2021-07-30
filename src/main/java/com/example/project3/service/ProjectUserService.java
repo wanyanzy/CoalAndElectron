@@ -1,4 +1,4 @@
-package service;
+package com.example.project3.service;
 
 import com.example.project3.pojo.ProjectUser;
 
@@ -16,4 +16,6 @@ public interface ProjectUserService {
     List<ProjectUser> selectAll();
 
     ProjectUser select (Integer id);
+
+    List<ProjectUser> selectByCorporationId (Integer corporationId);
 }

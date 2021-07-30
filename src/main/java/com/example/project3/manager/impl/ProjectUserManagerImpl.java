@@ -19,31 +19,36 @@ public class ProjectUserManagerImpl implements ProjectUserManager {
 
     @Override
     public Integer insert(ProjectUser target) {
-        return this.projectUserDao.save(target);
+        return projectUserDao.save(target);
     }
 
     @Override
     public Integer drop(Integer id) {
-        return this.projectUserDao.drop(id);
+        return projectUserDao.drop(id);
     }
 
     @Override
     public Integer delete(Integer id) {
-        return this.projectUserDao.delete(id);
+        return projectUserDao.delete(id);
     }
 
     @Override
     public Integer update(ProjectUser target) {
-        return this.projectUserDao.update(target);
+        return projectUserDao.update(target);
     }
 
     @Override
     public List<ProjectUser> selectAll() {
-        return this.projectUserDao.selectAll();
+        return projectUserDao.selectAll();
     }
 
     @Override
     public ProjectUser select(Integer id) {
-        return this.projectUserDao.select(id);
+        return projectUserDao.select(id);
+    }
+
+    @Override
+    public List<ProjectUser> selectByCorporationId(Integer corporationId) {
+        return projectUserDao.selectByCorporationId(corporationId);
     }
 }
