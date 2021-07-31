@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
-public class ProjectUser implements Serializable,Cloneable {
+public class ProjectUser implements Serializable{
 	Integer id;
 	Byte enable;
 	String userName;

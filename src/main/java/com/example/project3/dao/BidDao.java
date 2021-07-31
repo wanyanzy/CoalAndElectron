@@ -9,21 +9,21 @@ import java.util.List;
 
 @Mapper
 public interface BidDao {
-    Integer save (@Param("bid") Bid target);
+	Integer save (@Param("bid") Bid target);
 
-    Integer drop (@Param("id") Integer id);
+	Integer drop (@Param("id") Integer id);
 
-    Integer delete(@Param("id") Integer id);
+	Integer delete (@Param("id") Integer id);
 
-    Integer update (@Param("bid") Bid target);
+	Integer update (@Param("bid") Bid target);
 
-    Bid select(@Param("id") Integer id);
+	Bid select (@Param("id") Integer id);
 
-    List<Bid> selectAll ();
+	List<Bid> selectAll ();
 
-    List<Bid> selectByCorporationId(@Param("corporationId") Integer corporationId);
+	List<Bid> selectByCorporationId (@Param("corporationId") Integer corporationId);
 
-    List<Bid> selectForSell();
+	List<Bid> selectForSell ();
 
-    List<Bid> selectForBuy();
+	List<Bid> selectForBuy ();
 }

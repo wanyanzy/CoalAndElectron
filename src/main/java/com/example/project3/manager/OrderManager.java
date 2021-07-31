@@ -5,15 +5,15 @@ import com.example.project3.pojo.Order;
 import java.util.List;
 
 public interface OrderManager {
-    Integer insert (Order target);
+	Integer insert (Order target);
 
-    Integer drop (Integer id);
+	Integer drop (Integer id);
 
-    Integer delete (Integer id);
+	Integer delete (Integer id);
 
-    Integer update (Order target);
+	Integer update (Order target);
 
-    List<Order> selectAll();
+	List<Order> selectAll ();
 
-    Order select (Integer id);
+	Order select (Integer id);
 }

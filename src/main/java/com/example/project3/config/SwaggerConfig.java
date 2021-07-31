@@ -31,7 +31,7 @@ public class SwaggerConfig {
 	private ApiInfo apiInfo () {
 		return new ApiInfoBuilder()
 				.title("国煤系统")
-				.description("数据返回有任何问题微信/QQ喊我"+"\n本次服务器开启时间: "+ LocalDateTime.now().format(new DateTimeFormatterFactory("yyyy年MM月dd日 HH:mm:ss").createDateTimeFormatter()))
+				.description("数据返回有任何问题微信/QQ喊我" + "\n本次服务器开启时间: " + LocalDateTime.now().format(new DateTimeFormatterFactory("yyyy年MM月dd日 HH:mm:ss").createDateTimeFormatter()))
 				.version("1.0")
 				.build();
 	}

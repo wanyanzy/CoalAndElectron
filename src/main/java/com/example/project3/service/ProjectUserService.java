@@ -5,17 +5,17 @@ import com.example.project3.pojo.ProjectUser;
 import java.util.List;
 
 public interface ProjectUserService {
-    void insert (ProjectUser target);
+	void insert (ProjectUser target);
 
-    void drop (Integer id);
+	void drop (Integer id);
 
-    void delete (Integer id);
+	void delete (Integer id);
 
-    void update (ProjectUser target);
+	void update (ProjectUser target);
 
-    List<ProjectUser> selectAll();
+	List<ProjectUser> selectAll ();
 
-    ProjectUser select (Integer id);
+	ProjectUser select (Integer id);
 
-    List<ProjectUser> selectByCorporationId (Integer corporationId);
+	List<ProjectUser> selectByCorporationId (Integer corporationId);
 }
