@@ -18,5 +18,7 @@ public interface BidManager {
 
     List<Bid> selectByCorporateId(Integer corporateId);
 
+    List<Bid> selectForSell();
 
+    List<Bid> selectForBuy();
 }

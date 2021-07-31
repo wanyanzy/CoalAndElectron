@@ -1,9 +1,9 @@
-package service.impl;
+package com.example.project3.service.impl;
 
 import com.example.project3.manager.CorporationManager;
 import com.example.project3.pojo.Corporation;
 import org.springframework.stereotype.Service;
-import service.CorporationService;
+import com.example.project3.service.CorporationService;
 
 import java.util.List;
 @Service
@@ -32,6 +32,12 @@ public class CorporationServiceImpl implements CorporationService {
     @Override
     public Corporation select(Integer corporationId) {
         return corporationManager.select(corporationId);
+    }
+
+
+    @Override
+    public List<Corporation> selectByCorporateId(Integer corporationId) {
+        return corporationManager.selectByCorporateId(corporationId);
     }
 
     @Override

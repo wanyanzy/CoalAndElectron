@@ -17,4 +17,6 @@ public interface ProjectUserManager {
     List<ProjectUser> selectAll();
 
     ProjectUser select (Integer id);
+
+    List<ProjectUser> selectByCorporationId(Integer corporationId);
 }

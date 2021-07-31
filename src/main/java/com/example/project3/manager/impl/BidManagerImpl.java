@@ -20,37 +20,47 @@ public class BidManagerImpl implements BidManager {
 
     @Override
     public Integer insert (Bid target){
-        return this.bidDao.save(target);
+        return bidDao.save(target);
     }
 
     @Override
     public Integer drop (Integer id){
-        return this.bidDao.drop(id);
+        return bidDao.drop(id);
     }
 
     @Override
     public Integer delete (Integer id){
-        return this.bidDao.delete(id);
+        return bidDao.delete(id);
     }
 
     @Override
     public Integer update (Bid target){
-        return this.bidDao.update(target);
+        return bidDao.update(target);
     }
 
     @Override
     public List<Bid> selectAll(){
-        return this.bidDao.selectAll();
+        return bidDao.selectAll();
+    }
+
+    @Override
+    public List<Bid> selectForSell() {
+        return bidDao.selectForSell();
+    }
+
+    @Override
+    public List<Bid> selectForBuy() {
+        return bidDao.selectForBuy();
     }
 
     @Override
     public Bid select(Integer id){
-        return this.bidDao.select(id);
+        return bidDao.select(id);
     }
 
     @Override
     public List<Bid> selectByCorporateId(Integer corporateId){
-        return this.bidDao.selectByCorporationId(corporateId);
+        return bidDao.selectByCorporationId(corporateId);
     }
 
 

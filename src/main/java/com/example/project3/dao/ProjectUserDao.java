@@ -21,4 +21,5 @@ public interface ProjectUserDao {
 
     List<ProjectUser> selectAll();
 
+    List<ProjectUser> selectByCorporationId(@Param("corporationId") Integer corporationId);
 }

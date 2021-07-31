@@ -36,6 +36,10 @@
         select * from user
         where enable = 0
     </select>
+    <select id="selectByCorporationId" resultMap="userMap">
+        select * from user
+        where corporateId = #{corporationId,jdbcType=INTEGER} and enable = 0
+    </select>
     <update id="update" parameterType="com.example.project3.pojo.ProjectUser">
         update user set
         userName=#{target.userName,jdbcType=VARCHAR}

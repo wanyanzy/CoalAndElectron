@@ -19,4 +19,5 @@ public interface CorporationManager {
 
     List<Corporation> selectByCorporateId(Integer corporateId);
 
+
 }

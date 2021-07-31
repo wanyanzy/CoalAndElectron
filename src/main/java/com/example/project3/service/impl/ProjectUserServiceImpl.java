@@ -1,10 +1,10 @@
-package service.impl;
+package com.example.project3.service.impl;
 
 import com.example.project3.manager.ProjectUserManager;
 import com.example.project3.pojo.ProjectUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import service.ProjectUserService;
+import com.example.project3.service.ProjectUserService;
 
 import java.util.List;
 @Service
@@ -44,5 +44,10 @@ public class ProjectUserServiceImpl implements ProjectUserService {
         @Override
         public ProjectUser select(Integer id) {
                 return projectUserManager.select(id);
+        }
+
+        @Override
+        public List<ProjectUser> selectByCorporationId(Integer corporationId) {
+                return projectUserManager.selectByCorporationId(corporationId);
         }
 }

@@ -23,5 +23,7 @@ public interface BidDao {
 
     List<Bid> selectByCorporationId(@Param("corporationId") Integer corporationId);
 
+    List<Bid> selectForSell();
 
+    List<Bid> selectForBuy();
 }

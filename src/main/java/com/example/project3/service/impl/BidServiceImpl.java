@@ -1,10 +1,10 @@
-package service.impl;
+package com.example.project3.service.impl;
 
 import com.example.project3.manager.BidManager;
 import com.example.project3.pojo.Bid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import service.BidService;
+import com.example.project3.service.BidService;
 
 import java.util.List;
 
@@ -40,6 +40,16 @@ public class BidServiceImpl implements BidService {
     @Override
     public List<Bid> selectAll() {
         return bidManager.selectAll();
+    }
+
+    @Override
+    public List<Bid> selectForSell() {
+        return bidManager.selectForSell();
+    }
+
+    @Override
+    public List<Bid> selectForBuy() {
+        return bidManager.selectForBuy();
     }
 
     @Override
