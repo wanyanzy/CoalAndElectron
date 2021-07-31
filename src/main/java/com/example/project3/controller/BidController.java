@@ -8,12 +8,14 @@ import com.example.project3.pojo.Bid;
 import com.example.project3.service.BidService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/bid")
@@ -40,6 +42,7 @@ public class BidController {
 
     @ApiOperation("招标")
     @GetMapping("/create/{firstPartIsSeller}/{corporateId}/{amount}/{price}/{coal}/{transportWay}/{transportFee}/{address}")
+    @Transactional(rollbackFor = Exception.class)
     public Transporter create (@PathVariable("firstPartIsSeller") Integer firstPartIsSeller,
                        @PathVariable("corporateId") Integer corporateId,
                        @PathVariable("amount") Integer amount,
@@ -51,6 +54,7 @@ public class BidController {
         var bid = new Bid();
         var price = new BigDecimal(priceString);
         var transportFee = new BigDecimal(transportFeeString);
+        byte enable = 0;
         bid.setFirstPartIsSeller(firstPartIsSeller)
                 .setCorporateId(corporateId)
                 .setAmount(amount)
@@ -58,7 +62,8 @@ public class BidController {
                 .setCoal(coal)
                 .setTransportWay(transportWay)
                 .setTransportFee(transportFee)
-                .setAddress(address);
+                .setAddress(address)
+                .setEnable(enable);
         bidService.insert(bid);
         try {
             var transporter = successFactory.getDeliverPackage("");
@@ -72,6 +77,7 @@ public class BidController {
 
     @ApiOperation("招标信息完善或更新")
     @GetMapping("/coalinfo/{bidId}/{qnetar}/{mt}/{aar}/{varHigh}/{varLow}/{star}/{st}/{hgi}/{grain}/{fc}/{g}/{y}/{sodiumBasicOxide}")
+    @Transactional(rollbackFor = Exception.class)
     public Transporter coalInfo(@PathVariable("bidId") Integer id,
                                 @PathVariable("qnetar") double qnetar,
                                 @PathVariable("mt") double mt,
@@ -112,12 +118,12 @@ public class BidController {
 
     @ApiOperation("查找所有卖方招标")
     @GetMapping("selectForSell")
-    public Transporter selectForSell(){
+    public List<Bid> selectForSell(){
         var result = bidService.selectForSell();
         try {
             var transporter = successFactory.getDeliverPackage("");
             transporter.addData("data",result);
-            return transporter;
+            return result;
         } catch (CloneNotSupportedException cloneNotSupportedException){
             cloneNotSupportedException.printStackTrace();
         }
@@ -153,6 +159,7 @@ public class BidController {
     }
     @ApiOperation("删除招标")
     @GetMapping("delete/{corporateId}")
+    @Transactional(rollbackFor = Exception.class)
     public Transporter delete(@PathVariable("corporateId") Integer corporteId){
         try {
             bidService.delete(corporteId);

@@ -56,8 +56,21 @@ public class OrderController {
                 .setTransportWay(transportWay)
                 .setTransportFee(transportFee);
         try {
-            var transporter = successFactory.getDeliverPackage("成功创建合同");
+            var transporter = successFactory.getDeliverPackage("成功创建交易");
             transporter.addData("data" ,order);
+            return transporter;
+        } catch (CloneNotSupportedException cloneNotSupportedException) {
+            cloneNotSupportedException.printStackTrace();
+        }
+        return null;
+    }
+
+    @ApiOperation("删除交易")
+    @GetMapping("/delete/{orderId}")
+    public Transporter delete(@PathVariable("orderId") Integer orderId){
+        orderService.delete(orderId);
+        try {
+            var transporter = successFactory.getDeliverPackage("成功删除交易");
             return transporter;
         } catch (CloneNotSupportedException cloneNotSupportedException) {
             cloneNotSupportedException.printStackTrace();

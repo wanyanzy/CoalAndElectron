@@ -19,7 +19,6 @@ import java.math.BigDecimal;
 @RequestMapping("/offer")
 public class OfferController {
     private SuccessFactory successFactory;
-    private FailFactory failFactory;
     private OfferPriceService offerPriceService;
 
     @Autowired
@@ -27,10 +26,6 @@ public class OfferController {
         this.successFactory = successFactory;
     }
 
-    @Autowired
-    public void setFailFactory(FailFactory failFactory) {
-        this.failFactory = failFactory;
-    }
 
     @Autowired
     public void setOfferPriceService(OfferPriceService offerPriceService) {
@@ -61,14 +56,21 @@ public class OfferController {
     }
     @ApiOperation("删除报价")
     @GetMapping("/delete/{offerId}")
-    public Transporter delete(@PathVariable("offerId") Integer offerId){
+    public Transporter delete(@PathVariable("offerId") Integer offerId) throws CloneNotSupportedException{
         offerPriceService.delete(offerId);
-        try {
+
             var transporter = successFactory.getDeliverPackage("成功删除报价");
             return transporter;
-        } catch (CloneNotSupportedException cloneNotSupportedException) {
-            cloneNotSupportedException.printStackTrace();
-        }
-        return null;
+
+
     }
+    @ApiOperation("查找投标")
+    @GetMapping("/selectByBidId/{bidId}")
+    public Transporter selectByBidId(@PathVariable("bidId") Integer bidId)throws CloneNotSupportedException{
+       //var result = offerPriceService.selectByBidId(bidId);
+        var transporter = successFactory.getDeliverPackage("成功查找投标");
+        //transporter.addData("data",result);
+        return transporter;
+
+}
 }
