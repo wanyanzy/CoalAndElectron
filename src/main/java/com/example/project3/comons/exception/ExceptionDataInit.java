@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(1)
 public class ExceptionDataInit implements CommandLineRunner {
+	private static final String ERROR_MESSAGE_LIST = "location_of_error";
 	private RedisUtils redisUtils;
-	private static final String ERROR_MESSAGE_LIST="location_of_error";
 
 	@Autowired
 	public ExceptionDataInit setRedisUtils (RedisUtils redisUtils) {
@@ -26,7 +26,7 @@ public class ExceptionDataInit implements CommandLineRunner {
 		initialize();
 	}
 
-	public void initialize(){
-		redisUtils.hPutIfAbsent(ERROR_MESSAGE_LIST,Integer.toString(666),"Undefined internal error");
+	public void initialize () {
+		redisUtils.hPutIfAbsent(ERROR_MESSAGE_LIST, Integer.toString(666), "Undefined internal error");
 	}
 }

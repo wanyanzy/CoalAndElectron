@@ -6,18 +6,18 @@ import com.example.project3.pojo.Corporation;
 import java.util.List;
 
 public interface CorporationService {
-    void insert (Corporation corporation);
+	void insert (Corporation corporation);
 
-    void delete (Integer corporationId);
+	void delete (Integer corporationId);
 
-    void drop (Integer corporationId);
+	void drop (Integer corporationId);
 
-    Corporation select (Integer corporationId);
+	Corporation select (Integer corporationId);
 
-    List<Corporation> selectAll();
+	List<Corporation> selectAll ();
 
-    List<Corporation> selectByCorporateId(Integer corporationId);
+	List<Corporation> selectByCorporateId (Integer corporationId);
 
-    void update (Corporation corporation);
+	void update (Corporation corporation);
 
 }

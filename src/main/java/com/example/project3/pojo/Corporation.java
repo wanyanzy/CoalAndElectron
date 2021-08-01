@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @Accessors(chain = true)
 @Getter
 @Setter
-public class Corporation implements Serializable,Cloneable {
+public class Corporation implements Serializable {
 	Integer id;
 	Byte enable;
 	Byte status;

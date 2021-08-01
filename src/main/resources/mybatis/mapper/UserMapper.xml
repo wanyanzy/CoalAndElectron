@@ -33,7 +33,8 @@
         where id = #{id,jdbcType=INTEGER} and enable = 0
     </select>
     <select id="selectAll" resultMap="userMap">
-        select * from user
+        select *
+        from user
         where enable = 0
     </select>
     <select id="selectByCorporationId" resultMap="userMap">
