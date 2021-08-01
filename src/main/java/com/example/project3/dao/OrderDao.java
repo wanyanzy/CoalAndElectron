@@ -8,16 +8,16 @@ import java.util.List;
 
 @Mapper
 public interface OrderDao {
-    Integer save (@Param("target") Order order);
+	Integer save (@Param("target") Order order);
 
-    Integer drop (@Param("id") Integer id);
+	Integer drop (@Param("id") Integer id);
 
-    Integer delete (@Param("id") Integer id);
+	Integer delete (@Param("id") Integer id);
 
-    Integer update (@Param("target") Order order);
+	Integer update (@Param("target") Order order);
 
-    Order select(@Param("id") Integer id);
+	Order select (@Param("id") Integer id);
 
-    List<Order> selectAll();
+	List<Order> selectAll ();
 
 }

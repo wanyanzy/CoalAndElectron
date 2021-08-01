@@ -30,7 +30,8 @@
         where id = #{id,jdbcType=INTEGER} and enable = 0
     </select>
     <select id="selectAll" resultMap="offerPriceMap">
-        select * from offer
+        select *
+        from offer
         where enable = 0
     </select>
     <select id="selectByBidId" resultMap="offerPriceMap">
@@ -52,4 +53,4 @@
         ,message=#{offerPrice.message,jdbcType=VARCHAR}
         where id = #{offerPrice.id,jdbcType=INTEGER}
     </update>
- </mapper>
+</mapper>

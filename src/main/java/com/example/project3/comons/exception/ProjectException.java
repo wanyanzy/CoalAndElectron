@@ -3,7 +3,7 @@ package com.example.project3.comons.exception;
 /**
  * @author 橙鼠鼠
  */
-public class ProjectException extends RuntimeException{
+public class ProjectException extends RuntimeException {
 	private final Integer errorCode;
 
 	/**

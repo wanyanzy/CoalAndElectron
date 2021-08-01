@@ -29,25 +29,24 @@
         <result column="g" property="g" javaType="double" jdbcType="DOUBLE"/>
         <result column="y" property="y" javaType="double" jdbcType="DOUBLE"/>
         <result column="sodiumBasicOxide" property="sodiumBasicOxide" javaType="double" jdbcType="DOUBLE"/>
-
     </resultMap>
     <insert id="save" parameterType="com.example.project3.pojo.Bid" useGeneratedKeys="true" keyColumn="id"
             keyProperty="bid.id">
         insert into bid values (#{bid.id,jdbcType=INTEGER},#{bid.enable,jdbcType=TINYINT},
-                                #{bid.firstPartIsSeller,jdbcType=INTEGER},#{bid.corporateId,jdbcType=INTEGER},
-                                #{bid.amount,jdbcType=INTEGER},#{bid.price,jdbcType=DECIMAL},
-                                #{bid.coal,jdbcType=VARCHAR},#{bid.transportWay,jdbcType=VARCHAR},
-                                #{bid.transportFee,jdbcType=DECIMAL},#{bid.address,jdbcType=VARCHAR},
-                                #{bid.offerBond,jdbcType=DECIMAL},#{bid.performBond,jdbcType=DECIMAL},
-                                #{bid.message,jdbcType=VARCHAR},
-                                #{bid.qnetar,jdbcType=DOUBLE},#{bid.qnetar,jdbcType=DOUBLE},
-                                #{bid.aar,jdbcType=DOUBLE},#{bid.varHigh,jdbcType=DOUBLE},
-                                #{bid.varLow,jdbcType=DOUBLE},#{bid.star,jdbcType=DOUBLE},
-                                #{bid.st,jdbcType=DOUBLE},#{bid.hgi,jdbcType=DOUBLE},
-                                #{bid.grain,jdbcType=DOUBLE},#{bid.fc,jdbcType=DOUBLE},
-                                #{bid.g,jdbcType=DOUBLE},#{bid.y,jdbcType=DOUBLE},
-                                #{bid.sodiumBasicOxide,jdbcType=DOUBLE}
-                                       )
+        #{bid.firstPartIsSeller,jdbcType=INTEGER},#{bid.corporateId,jdbcType=INTEGER},
+        #{bid.amount,jdbcType=INTEGER},#{bid.price,jdbcType=DECIMAL},
+        #{bid.coal,jdbcType=VARCHAR},#{bid.transportWay,jdbcType=VARCHAR},
+        #{bid.transportFee,jdbcType=DECIMAL},#{bid.address,jdbcType=VARCHAR},
+        #{bid.offerBond,jdbcType=DECIMAL},#{bid.performBond,jdbcType=DECIMAL},
+        #{bid.message,jdbcType=VARCHAR},
+        #{bid.qnetar,jdbcType=DOUBLE},#{bid.qnetar,jdbcType=DOUBLE},
+        #{bid.aar,jdbcType=DOUBLE},#{bid.varHigh,jdbcType=DOUBLE},
+        #{bid.varLow,jdbcType=DOUBLE},#{bid.star,jdbcType=DOUBLE},
+        #{bid.st,jdbcType=DOUBLE},#{bid.hgi,jdbcType=DOUBLE},
+        #{bid.grain,jdbcType=DOUBLE},#{bid.fc,jdbcType=DOUBLE},
+        #{bid.g,jdbcType=DOUBLE},#{bid.y,jdbcType=DOUBLE},
+        #{bid.sodiumBasicOxide,jdbcType=DOUBLE}
+        )
     </insert>
     <update id="delete" parameterType="integer">
         update bid set enable = 1
@@ -61,45 +60,51 @@
         where id=#{id,jdbcType=INTEGER} and enable = 0
     </select>
     <select id="selectAll" resultMap="bidMap">
-        select * from bid where enable = 0
+        select *
+        from bid
+        where enable = 0
     </select>
     <select id="selectByCorporationId" resultMap="bidMap">
         select * from bid
         where id=#{corporationId,jdbcType=INTEGER} and enable = 0
     </select>
     <select id="selectForSell" resultMap="bidMap">
-        select * from bid
-        where firstPartIsSeller = 1 and enable = 0
+        select *
+        from bid
+        where firstPartIsSeller = 1
+          and enable = 0
     </select>
     <select id="selectForBuy" resultMap="bidMap">
-        select * from bid
-        where firstPartIsSeller = 0 and enable = 0
+        select *
+        from bid
+        where firstPartIsSeller = 0
+          and enable = 0
     </select>
     <update id="update" parameterType="com.example.project3.pojo.Bid">
         update bid set
-                firstPartIsSeller=#{bid.firstPartIsSeller,jdbcType=INTEGER}
-                     ,amount=#{bid.amount,jdbcType=INTEGER}
-                     ,price=#{bid.price,jdbcType=DECIMAL}
-                     ,coal=#{bid.coal,jdbcType=VARCHAR}
-                     ,transportWay=#{bid.transportWay,jdbcType=VARCHAR}
-                     ,transportFee=#{bid.transportFee,jdbcType=DECIMAL}
-                     ,address=#{bid.address,jdbcType=VARCHAR}
-                     ,offerBond=#{bid.offerBond,jdbcType=DECIMAL}
-                     ,performBond=#{bid.performBond,jdbcType=DECIMAL}
-                     ,message=#{bid.message,jdbcType=VARCHAR}
-                     ,qnetar=#{bid.qnetar,jdbcType=DOUBLE}
-                     ,mt=#{bid.mt,jdbcType=DOUBLE}
-                     ,aar=#{bid.aar,jdbcType=DOUBLE}
-                     ,varHigh=#{bid.varHigh,jdbcType=DOUBLE}
-                     ,varHigh=#{bid.varLow,jdbcType=DOUBLE}
-                     ,star=#{bid.star,jdbcType=DOUBLE}
-                     ,st=#{bid.st,jdbcType=DOUBLE}
-                     ,hgi=#{bid.hgi,jdbcType=DOUBLE}
-                     ,grain=#{bid.grain,jdbcType=DOUBLE}
-                     ,fc=#{bid.fc,jdbcType=DOUBLE}
-                     ,g=#{bid.g,jdbcType=DOUBLE}
-                     ,y=#{bid.y,jdbcType=DOUBLE}
-                     ,sodiumBasicOxide=#{bid.sodiumBasicOxide,jdbcType=DOUBLE}
+        firstPartIsSeller=#{bid.firstPartIsSeller,jdbcType=INTEGER}
+        ,amount=#{bid.amount,jdbcType=INTEGER}
+        ,price=#{bid.price,jdbcType=DECIMAL}
+        ,coal=#{bid.coal,jdbcType=VARCHAR}
+        ,transportWay=#{bid.transportWay,jdbcType=VARCHAR}
+        ,transportFee=#{bid.transportFee,jdbcType=DECIMAL}
+        ,address=#{bid.address,jdbcType=VARCHAR}
+        ,offerBond=#{bid.offerBond,jdbcType=DECIMAL}
+        ,performBond=#{bid.performBond,jdbcType=DECIMAL}
+        ,message=#{bid.message,jdbcType=VARCHAR}
+        ,qnetar=#{bid.qnetar,jdbcType=DOUBLE}
+        ,mt=#{bid.mt,jdbcType=DOUBLE}
+        ,aar=#{bid.aar,jdbcType=DOUBLE}
+        ,varHigh=#{bid.varHigh,jdbcType=DOUBLE}
+        ,varHigh=#{bid.varLow,jdbcType=DOUBLE}
+        ,star=#{bid.star,jdbcType=DOUBLE}
+        ,st=#{bid.st,jdbcType=DOUBLE}
+        ,hgi=#{bid.hgi,jdbcType=DOUBLE}
+        ,grain=#{bid.grain,jdbcType=DOUBLE}
+        ,fc=#{bid.fc,jdbcType=DOUBLE}
+        ,g=#{bid.g,jdbcType=DOUBLE}
+        ,y=#{bid.y,jdbcType=DOUBLE}
+        ,sodiumBasicOxide=#{bid.sodiumBasicOxide,jdbcType=DOUBLE}
         where id=#{bid.id,jdbcType=INTEGER}
     </update>
 </mapper>

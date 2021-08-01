@@ -12,7 +12,7 @@ import java.sql.Date;
  */
 @Data
 @Accessors(chain = true)
-public class PreStoreRecord implements Serializable,Cloneable {
+public class PreStoreRecord implements Serializable{
 	Integer id;
 	Byte enable;
 	BigDecimal money;

@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  */
 @Data
 @Accessors(chain = true)
-public class OfferPrice implements Serializable,Cloneable {
+public class OfferPrice implements Serializable{
 	Integer id;
 	Byte enable;
 	BigDecimal price;

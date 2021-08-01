@@ -10,51 +10,51 @@ import java.util.List;
 
 @Service
 public class OfferPriceManagerImpl implements OfferPriceManager {
-    OfferPriceDao offerPriceDao;
+	OfferPriceDao offerPriceDao;
 
-    @Autowired
-    public void setOfferPriceDao(OfferPriceDao offerPriceDao) {
-        this.offerPriceDao = offerPriceDao;
-    }
+	@Autowired
+	public void setOfferPriceDao (OfferPriceDao offerPriceDao) {
+		this.offerPriceDao = offerPriceDao;
+	}
 
 
-    @Override
-    public Integer insert(OfferPrice target) {
-        return this.offerPriceDao.save(target);
-    }
+	@Override
+	public Integer insert (OfferPrice target) {
+		return this.offerPriceDao.save(target);
+	}
 
-    @Override
-    public Integer drop(Integer id) {
-        return this.offerPriceDao.drop(id);
-    }
+	@Override
+	public Integer drop (Integer id) {
+		return this.offerPriceDao.drop(id);
+	}
 
-    @Override
-    public Integer delete(Integer id) {
-        return this.offerPriceDao.delete(id);
-    }
+	@Override
+	public Integer delete (Integer id) {
+		return this.offerPriceDao.delete(id);
+	}
 
-    @Override
-    public Integer update(OfferPrice target) {
-        return this.offerPriceDao.update(target);
-    }
+	@Override
+	public Integer update (OfferPrice target) {
+		return this.offerPriceDao.update(target);
+	}
 
-    @Override
-    public List<OfferPrice> selectAll() {
-        return this.offerPriceDao.selectAll();
-    }
+	@Override
+	public List<OfferPrice> selectAll () {
+		return this.offerPriceDao.selectAll();
+	}
 
-    @Override
-    public OfferPrice select(Integer id) {
-        return this.offerPriceDao.select(id);
-    }
+	@Override
+	public OfferPrice select (Integer id) {
+		return this.offerPriceDao.select(id);
+	}
 
-    @Override
-    public List<OfferPrice> selectByBidId(Integer bidId) {
-        return this.offerPriceDao.selectByBidId(bidId);
-    }
+	@Override
+	public List<OfferPrice> selectByBidId (Integer bidId) {
+		return this.offerPriceDao.selectByBidId(bidId);
+	}
 
-    @Override
-    public List<OfferPrice> selectByUserId(Integer userId) {
-        return this.selectByUserId(userId);
-    }
+	@Override
+	public List<OfferPrice> selectByUserId (Integer userId) {
+		return this.selectByUserId(userId);
+	}
 }
