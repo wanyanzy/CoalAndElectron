@@ -39,22 +39,21 @@ public class OfferController {
 	                           @PathVariable("amount") Integer amount,
 	                           @PathVariable("userId") Integer userId,
 	                           @PathVariable("bidId") Integer bidId,
-	                           @PathVariable("message") String message) throws ProjectException {
+	                           @PathVariable("message") String message) throws CloneNotSupportedException{
 		var offerPrice = new OfferPrice();
 		var price = new BigDecimal(priceSting);
+		byte enable = 0;
 		offerPrice.setPrice(price)
 				.setAmount(amount)
 				.setUserId(userId)
 				.setBidId(bidId)
-				.setMessage(message);
-		try {
-			var transporter = successFactory.getDeliverPackage("成功发起报价");
-			transporter.addData("data", offerPrice);
-			return transporter;
-		} catch (CloneNotSupportedException cloneNotSupportedException) {
-			cloneNotSupportedException.printStackTrace();
-		}
-		return null;
+				.setMessage(message)
+				.setEnable(enable);
+		offerPriceService.insert(offerPrice);
+		var transporter = successFactory.getDeliverPackage("成功发起报价");
+		transporter.addData("data", offerPrice);
+		return transporter;
+
 	}
 
 	@ApiOperation("删除报价")

@@ -20,41 +20,41 @@ public class OfferPriceManagerImpl implements OfferPriceManager {
 
 	@Override
 	public Integer insert (OfferPrice target) {
-		return this.offerPriceDao.save(target);
+		return offerPriceDao.save(target);
 	}
 
 	@Override
 	public Integer drop (Integer id) {
-		return this.offerPriceDao.drop(id);
+		return offerPriceDao.drop(id);
 	}
 
 	@Override
 	public Integer delete (Integer id) {
-		return this.offerPriceDao.delete(id);
+		return offerPriceDao.delete(id);
 	}
 
 	@Override
 	public Integer update (OfferPrice target) {
-		return this.offerPriceDao.update(target);
+		return offerPriceDao.update(target);
 	}
 
 	@Override
 	public List<OfferPrice> selectAll () {
-		return this.offerPriceDao.selectAll();
+		return offerPriceDao.selectAll();
 	}
 
 	@Override
 	public OfferPrice select (Integer id) {
-		return this.offerPriceDao.select(id);
+		return offerPriceDao.select(id);
 	}
 
 	@Override
 	public List<OfferPrice> selectByBidId (Integer bidId) {
-		return this.offerPriceDao.selectByBidId(bidId);
+		return offerPriceDao.selectByBidId(bidId);
 	}
 
 	@Override
 	public List<OfferPrice> selectByUserId (Integer userId) {
-		return this.selectByUserId(userId);
+		return offerPriceDao.selectByUserId(userId);
 	}
 }
