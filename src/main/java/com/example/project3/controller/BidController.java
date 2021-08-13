@@ -1,7 +1,6 @@
 package com.example.project3.controller;
 
-import com.example.project3.comons.exception.ProjectException;
-import com.example.project3.comons.transporter.FailFactory;
+
 import com.example.project3.comons.transporter.SuccessFactory;
 import com.example.project3.comons.transporter.Transporter;
 import com.example.project3.pojo.Bid;
@@ -43,7 +42,7 @@ public class BidController {
 	                           @PathVariable("coal") String coal,
 	                           @PathVariable("transportWay") String transportWay,
 	                           @PathVariable("transportFee") String transportFeeString,
-	                           @PathVariable("address") String address) throws ProjectException {
+	                           @PathVariable("address") String address) throws CloneNotSupportedException{
 		var bid = new Bid();
 		var price = new BigDecimal(priceString);
 		var transportFee = new BigDecimal(transportFeeString);
@@ -58,17 +57,13 @@ public class BidController {
 				.setAddress(address)
 				.setEnable(enable);
 		bidService.insert(bid);
-		try {
-			var transporter = successFactory.getDeliverPackage("");
-			transporter.addData("data", bid);
-			return transporter;
-		} catch (CloneNotSupportedException cloneNotSupportedException) {
-			cloneNotSupportedException.printStackTrace();
-		}
-		return null;
+		var transporter = successFactory.getDeliverPackage("");
+		transporter.addData("data", bid);
+		return transporter;
+
 	}
 
-	@ApiOperation("招标信息完善或更新")
+	@ApiOperation("招标信息完善")
 	@GetMapping("/coalinfo/{bidId}/{qnetar}/{mt}/{aar}/{varHigh}/{varLow}/{star}/{st}/{hgi}/{grain}/{fc}/{g}/{y}/{sodiumBasicOxide}")
 	@Transactional(rollbackFor = Exception.class)
 	public Transporter coalInfo (@PathVariable("bidId") Integer id,
@@ -84,7 +79,7 @@ public class BidController {
 	                             @PathVariable("fc") double fc,
 	                             @PathVariable("g") double g,
 	                             @PathVariable("y") double y,
-	                             @PathVariable("sodiumBasicOxide") double sodiumBasicOxide) throws ProjectException {
+	                             @PathVariable("sodiumBasicOxide") double sodiumBasicOxide) throws CloneNotSupportedException {
 		var bid = bidService.select(id);
 		bid.setQnetar(qnetar)
 				.setMt(mt)
@@ -99,14 +94,11 @@ public class BidController {
 				.setG(g)
 				.setY(y)
 				.setSodiumBasicOxide(sodiumBasicOxide);
-		try {
-			var transporter = successFactory.getDeliverPackage("");
-			transporter.addData("data", bid);
-			return transporter;
-		} catch (CloneNotSupportedException cloneNotSupportedException) {
-			cloneNotSupportedException.printStackTrace();
-		}
-		return null;
+		bidService.update(bid);
+		var transporter = successFactory.getDeliverPackage("");
+		transporter.addData("data", bid);
+		return transporter;
+
 	}
 
 	@ApiOperation("查找所有卖方招标")
@@ -120,45 +112,56 @@ public class BidController {
 
 	@ApiOperation("查找买方招标")
 	@GetMapping("selectForBuy")
-	public Transporter selectForBuy () {
+	public Transporter selectForBuy () throws CloneNotSupportedException{
 		var result = bidService.selectForBuy();
-		try {
-			var transporter = successFactory.getDeliverPackage("");
-			transporter.addData("data", result);
-			return transporter;
-		} catch (CloneNotSupportedException cloneNotSupportedException) {
-			cloneNotSupportedException.printStackTrace();
-		}
-		return null;
+		var transporter = successFactory.getDeliverPackage(Integer.toString(result.size()));
+		transporter.addData("data", result);
+		return transporter;
+
+	}
+
+	@ApiOperation("查找所有招标")
+	@GetMapping("selectAll")
+	public Transporter selectAll () throws CloneNotSupportedException{
+		var result = bidService.selectAll();
+		var transporter = successFactory.getDeliverPackage(Integer.toString(result.size()));
+		transporter.addData("data",result);
+		return transporter;
+	}
+
+	@ApiOperation("查找指定id招标")
+	@GetMapping("selectById/{id}")
+	public Transporter selectById (@PathVariable("id") Integer id) throws CloneNotSupportedException{
+		var result = bidService.select(id);
+		var transporter = successFactory.getDeliverPackage("查询成功");
+		transporter.addData("data",result);
+		return transporter;
 	}
 
 	@ApiOperation("查找指定法人的所有招标")
 	@GetMapping("selectByCorporateId/{corporateId}")
-	public Transporter selectByCorporateID (@PathVariable("corporateId") Integer corporateId) {
+	public Transporter selectByCorporateID (@PathVariable("corporateId") Integer corporateId) throws CloneNotSupportedException{
 		var result = bidService.selectByCorporateId(corporateId);
-		try {
-			var transporter = successFactory.getDeliverPackage("");
-			transporter.addData("data", result);
-			return transporter;
-		} catch (CloneNotSupportedException cloneNotSupportedException) {
-			cloneNotSupportedException.printStackTrace();
-		}
-		return null;
+		var transporter = successFactory.getDeliverPackage(Integer.toString(result.size()));
+		transporter.addData("data", result);
+		return transporter;
 	}
 
 	@ApiOperation("删除招标")
-	@GetMapping("delete/{corporateId}")
+	@GetMapping("delete/{id}")
 	@Transactional(rollbackFor = Exception.class)
-	public Transporter delete (@PathVariable("corporateId") Integer corporteId) {
-		try {
-			bidService.delete(corporteId);
-			return successFactory.getDeliverPackage("成功删除");
-		} catch (CloneNotSupportedException cloneNotSupportedException) {
-			cloneNotSupportedException.printStackTrace();
-		}
-		return null;
+	public Transporter delete (@PathVariable("id") Integer id) throws CloneNotSupportedException{
+		bidService.delete(id);
+		return successFactory.getDeliverPackage("成功删除");
 	}
 
+	@ApiOperation("移除招标")
+	@GetMapping("drop/{id}")
+	@Transactional(rollbackFor = Exception.class)
+	public Transporter drop (@PathVariable("id") Integer id) throws CloneNotSupportedException{
+		bidService.drop(id);
+		return successFactory.getDeliverPackage("成功删除");
+	}
 
 }
 
