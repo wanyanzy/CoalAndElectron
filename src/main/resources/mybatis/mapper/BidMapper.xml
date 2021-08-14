@@ -29,6 +29,8 @@
         <result column="g" property="g" javaType="double" jdbcType="DOUBLE"/>
         <result column="y" property="y" javaType="double" jdbcType="DOUBLE"/>
         <result column="sodiumBasicOxide" property="sodiumBasicOxide" javaType="double" jdbcType="DOUBLE"/>
+        <association property="corporation" select="com.example.project3.dao.CorporationDao.select"
+        column="corporateId" javaType="com.example.project3.pojo.Corporation"/>
     </resultMap>
     <insert id="save" parameterType="com.example.project3.pojo.Bid" useGeneratedKeys="true" keyColumn="id"
             keyProperty="bid.id">

@@ -17,7 +17,7 @@ public interface CorporationManager {
 
 	Corporation select (Integer id);
 
-	List<Corporation> selectByCorporateId (Integer corporateId);
+
 
 
 }

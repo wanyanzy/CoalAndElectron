@@ -48,8 +48,4 @@ public class CorporationManagerImpl implements CorporationManager {
 		return corporationDao.select(id);
 	}
 
-	@Override
-	public List<Corporation> selectByCorporateId (Integer corporateId) {
-		return corporationDao.selectAll();
-	}
 }

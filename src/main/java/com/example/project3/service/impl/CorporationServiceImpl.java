@@ -42,10 +42,7 @@ public class CorporationServiceImpl implements CorporationService {
 		return corporationManager.selectAll();
 	}
 
-	@Override
-	public List<Corporation> selectByCorporateId (Integer corporationId) {
-		return corporationManager.selectByCorporateId(corporationId);
-	}
+
 
 	@Override
 	public void update (Corporation corporation) {

@@ -5,6 +5,7 @@ import com.example.project3.comons.transporter.SuccessFactory;
 import com.example.project3.comons.transporter.Transporter;
 import com.example.project3.pojo.Bid;
 import com.example.project3.service.BidService;
+import com.example.project3.service.CorporationService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +21,7 @@ import java.math.BigDecimal;
 public class BidController {
 	private SuccessFactory successFactory;
 	private BidService bidService;
-
+	private CorporationService corporationService;
 
 	@Autowired
 	public void setBidService (BidService bidService) {
@@ -30,6 +31,11 @@ public class BidController {
 	@Autowired
 	public void setSuccessFactory (SuccessFactory successFactory) {
 		this.successFactory = successFactory;
+	}
+
+	@Autowired
+	public void setCorporationService(CorporationService corporationService) {
+		this.corporationService = corporationService;
 	}
 
 	@ApiOperation("招标")
@@ -55,7 +61,8 @@ public class BidController {
 				.setTransportWay(transportWay)
 				.setTransportFee(transportFee)
 				.setAddress(address)
-				.setEnable(enable);
+				.setEnable(enable)
+				.setCorporation(corporationService.select(corporateId));
 		bidService.insert(bid);
 		var transporter = successFactory.getDeliverPackage("");
 		transporter.addData("data", bid);

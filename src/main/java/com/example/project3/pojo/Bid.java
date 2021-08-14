@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -42,4 +41,5 @@ public class Bid implements Cloneable, Serializable {
 	Double g;
 	Double y;
 	Double sodiumBasicOxide;
+	Corporation corporation;
 }

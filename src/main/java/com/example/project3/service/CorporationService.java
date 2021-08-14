@@ -16,7 +16,7 @@ public interface CorporationService {
 
 	List<Corporation> selectAll ();
 
-	List<Corporation> selectByCorporateId (Integer corporationId);
+
 
 	void update (Corporation corporation);
 
