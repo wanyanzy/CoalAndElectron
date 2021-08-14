@@ -30,9 +30,13 @@ public class SwaggerConfig {
 
 	private ApiInfo apiInfo () {
 		return new ApiInfoBuilder()
-				.title("国煤系统")
-				.description("数据返回有任何问题微信/QQ喊我" + "\n本次服务器开启时间: " + LocalDateTime.now().format(new DateTimeFormatterFactory("yyyy年MM月dd日 HH:mm:ss").createDateTimeFormatter()))
-				.version("1.0")
+				.title("国煤系统 成都信息工程大学27组服务端Api")
+				.termsOfServiceUrl("https://github.com/MrCh1ppy/CoalAndElectron")
+				.description(
+						"\n服务条款为为github仓库网址"+
+						"\n组员:陈靖珏,汪宗远,王嘉琪,雷美莹,曾懿宁,王梦秋,罗健静"+
+						"\n本次服务器开启时间: " + LocalDateTime.now().format(new DateTimeFormatterFactory("yyyy年MM月dd日 HH:mm:ss").createDateTimeFormatter()))
+				.version("1.7")
 				.build();
 	}
 }

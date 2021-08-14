@@ -24,9 +24,11 @@ public class ExceptionDataInit implements CommandLineRunner {
 	@Override
 	public void run (String... args) throws Exception {
 		initialize();
+		System.out.println(redisUtils.hGet(ERROR_MESSAGE_LIST,Integer.toString(0)));
 	}
 
 	public void initialize () {
+		redisUtils.hPutIfAbsent(ERROR_MESSAGE_LIST, Integer.toString(0), "异常信息初始化完成");
 		redisUtils.hPutIfAbsent(ERROR_MESSAGE_LIST, Integer.toString(666), "Undefined internal error");
 	}
 }
