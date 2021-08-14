@@ -20,36 +20,36 @@ public class CorporationManagerImpl implements CorporationManager {
 
 	@Override
 	public Integer insert (Corporation target) {
-		return this.corporationDao.save(target);
+		return corporationDao.save(target);
 	}
 
 	@Override
 	public Integer delete (Integer id) {
-		return this.corporationDao.delete(id);
+		return corporationDao.delete(id);
 	}
 
 	@Override
 	public Integer drop (Integer id) {
-		return this.corporationDao.drop(id);
+		return corporationDao.drop(id);
 	}
 
 	@Override
 	public Integer update (Corporation target) {
-		return this.corporationDao.update(target);
+		return corporationDao.update(target);
 	}
 
 	@Override
 	public List<Corporation> selectAll () {
-		return this.corporationDao.selectAll();
+		return corporationDao.selectAll();
 	}
 
 	@Override
 	public Corporation select (Integer id) {
-		return this.corporationDao.select(id);
+		return corporationDao.select(id);
 	}
 
 	@Override
 	public List<Corporation> selectByCorporateId (Integer corporateId) {
-		return this.corporationDao.selectAll();
+		return corporationDao.selectAll();
 	}
 }

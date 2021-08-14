@@ -3,6 +3,7 @@ package com.example.project3.service.impl;
 import com.example.project3.manager.CorporationManager;
 import com.example.project3.pojo.Corporation;
 import com.example.project3.service.CorporationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 public class CorporationServiceImpl implements CorporationService {
 	private CorporationManager corporationManager;
 
+	@Autowired
 	public void setCorporationManager (CorporationManager corporationManager) {
 		this.corporationManager = corporationManager;
 	}

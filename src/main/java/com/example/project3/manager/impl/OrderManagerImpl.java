@@ -19,31 +19,31 @@ public class OrderManagerImpl implements OrderManager {
 
 	@Override
 	public Integer insert (Order target) {
-		return this.orderDao.save(target);
+		return orderDao.save(target);
 	}
 
 	@Override
 	public Integer drop (Integer id) {
-		return this.orderDao.drop(id);
+		return orderDao.drop(id);
 	}
 
 	@Override
 	public Integer delete (Integer id) {
-		return this.orderDao.delete(id);
+		return orderDao.delete(id);
 	}
 
 	@Override
 	public Integer update (Order target) {
-		return this.orderDao.update(target);
+		return orderDao.update(target);
 	}
 
 	@Override
 	public List<Order> selectAll () {
-		return this.orderDao.selectAll();
+		return orderDao.selectAll();
 	}
 
 	@Override
 	public Order select (Integer id) {
-		return this.orderDao.select(id);
+		return orderDao.select(id);
 	}
 }

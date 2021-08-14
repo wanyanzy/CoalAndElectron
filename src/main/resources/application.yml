@@ -17,6 +17,7 @@ spring:
         max-active: 8
         max-wait: -1ms
         max-idle: 8
+      shutdown-timeout: 40
 mybatis:
   type-aliases-package: com.example.project3.pojo
   mapper-locations: classpath:mybatis/mapper/*.xml

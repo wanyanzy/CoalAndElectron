@@ -59,6 +59,6 @@ public class BidServiceImpl implements BidService {
 
 	@Override
 	public List<Bid> selectByCorporateId (Integer corporateId) {
-		return selectByCorporateId(corporateId);
+		return bidManager.selectByCorporateId(corporateId);
 	}
 }
